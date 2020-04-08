@@ -39,15 +39,15 @@ const covid19ImpactEstimator = (data) => {
   return {
     data: input,
     impact: {
-      impact: impact.currentlyInfected,
-      impactOver28Days: impact.infectionsByRequestedTime,
+      currentlyInfected: impact.currentlyInfected,
+      infectionsByRequestedTime: impact.infectionsByRequestedTime,
       impactPerDay: impact.infectedPeoplePerDay,
       impactOver1Week: impact.infectedPeopleOver1Week,
       impactOver1Month: impact.infectedPeopleOver30Days
     },
     severeImpact: {
-      severeImpact: severeImpact.currentlyInfected,
-      severeImpactsOver28Days: severeImpact.infectionsByRequestedTime,
+      currentlyInfected: severeImpact.currentlyInfected,
+      infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
       severeImpactPerDay: severeImpact.infectedPeoplePerDay,
       severeImpactOver1Week: severeImpact.infectedPeopleOver1Week,
       severeImpactOver1Month: severeImpact.infectedPeopleOver30Days
