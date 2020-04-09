@@ -30,18 +30,18 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.currentlyInfected = input.reportedCases * 50;
   impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
-  impact.infectionsByRequestedTimeperDay = impact.infectionsByRequestedTime / 30;
+  impact.infectionsByRequestedTimePerWeek = (impact.infectionsByRequestedTime / 30) * 7;
   return {
     data: input,
     impact: {
       currentlyInfected: impact.currentlyInfected,
       infectionsByRequestedTime: impact.infectionsByRequestedTime,
-      infectionsByRequestedTimeperDay: impact.infectionsByRequestedTimeperDay
+      infectionsByRequestedTimePerDay: impact.infectionsByRequestedTimePerDay
     },
     severeImpact: {
       currentlyInfected: severeImpact.currentlyInfected,
       infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
-      infectionsByRequestedTimeperDay: severeImpact.infectionsByRequestedTimeperDay
+      infectionsByRequestedTimePerDay: severeImpact.infectionsByRequestedTimePerDay
     }
   };
 };
