@@ -36,9 +36,6 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.infectedPeoplePerDay = Math.round(severeImpact.infectionsByRequestedTime / 28);
   severeImpact.infectedPeopleOver1Week = severeImpact.infectedPeoplePerDay * 7;
   severeImpact.infectedPeopleOver30Days = severeImpact.infectedPeoplePerDay * 30;
-
-  
-
   return {
     data: input,
     impact: {
