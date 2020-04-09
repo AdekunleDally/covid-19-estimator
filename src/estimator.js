@@ -36,25 +36,6 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.infectedPeoplePerDay = Math.round(severeImpact.infectionsByRequestedTime / 28);
   severeImpact.infectedPeopleOver1Week = severeImpact.infectedPeoplePerDay * 7;
   severeImpact.infectedPeopleOver30Days = severeImpact.infectedPeoplePerDay * 30;
-
-  console.log({
-    data: input,
-    impact: {
-      currentlyInfected: impact.currentlyInfected,
-      infectionsByRequestedTime: impact.infectionsByRequestedTime,
-      impactPerDay: impact.infectedPeoplePerDay,
-      impactOver1Week: impact.infectedPeopleOver1Week,
-      impactOver1Month: impact.infectedPeopleOver30Days
-    },
-    severeImpact: {
-      currentlyInfected: severeImpact.currentlyInfected,
-      infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
-      severeImpactPerDay: severeImpact.infectedPeoplePerDay,
-      severeImpactOver1Week: severeImpact.infectedPeopleOver1Week,
-      severeImpactOver1Month: severeImpact.infectedPeopleOver30Days
-    }
-    }
-  );
   return {
     data: input,
     impact: {
@@ -74,5 +55,4 @@ const covid19ImpactEstimator = (data) => {
   };
 };
 covid19ImpactEstimator(data);
-
 export default covid19ImpactEstimator;
