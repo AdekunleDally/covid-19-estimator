@@ -33,9 +33,9 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.currentlyInfected = input.reportedCases * 50;
   impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
-  if (data.period === 'days') {
-    severeImpact.infecPerDay = severeImpact.currentlyInfected * 2 ** (elapsedTime / 3);
-    impact.infecPerDay = impact.currentlyInfected * 2 ** (elapsedTime / 3);
+  if (data.period === 'weeks') {
+    severeImpact.infecPerDay = elapsedTime * 7;
+    impact.infecPerDay = elapsedTime * 7;
     return (impact.infecPerDay, severeImpact.infecPerDay);
   } /* else if (data.period === 'weeks') {
     const a = (severeImpact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 30)) * 7);
