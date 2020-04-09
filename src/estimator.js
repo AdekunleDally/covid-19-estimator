@@ -31,7 +31,7 @@ const covid19ImpactEstimator = (data) => {
   impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
   if (data.period === 'days') {
-    severeImpact.infectionsPerDay = severeImpact.currentlyInfected * (data.timeElapse / 3);
+    severeImpact.infectionsPerDay = severeImpact.currentlyInfected * (data.timeToElapse / 3);
     impact.infectionsByRequestedTimePerDay = impact.currentlyInfected * (data.timeToElapse / 3);
     return (impact.infectionsByRequestedTimePerDay, severeImpact.infectionsByRequestedTimePerDay);
   }
