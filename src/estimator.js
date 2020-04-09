@@ -2,12 +2,14 @@ const impact = {
   currentlyInfected: 0,
   infectionsByRequestedTime: 0,
   infecPerDay: 0,
+  infecPerWeek: 0,
   infectedPeopleOver30Days: 0
 };
 const severeImpact = {
   currentlyInfected: 0,
   infectionsByRequestedTime: 0,
   infecPerDay: 0,
+  infecPerWeek: 0,
   infectedPeopleOver30Days: 0
 };
 const data = {
@@ -33,20 +35,26 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
   if (data.period === 'days') {
     severeImpact.infecPerDay = severeImpact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 30));
-    impact.infecPerDay = impact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 3));
+    impact.infecPerDay = impact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 30));
     return (impact.infecPerDay, severeImpact.infecPerDay);
+  } if (data.period === 'weeks') {
+    severeImpact.infecPerWeek = severeImpact.infecPerDay * 7;
+    impact.infecPerWeek = impact.infecPerDay * 7;
+    return (impact.infecPerWeek, severeImpact.infecPerWeek);
   }
   return {
     data: input,
     impact: {
       currentlyInfected: impact.currentlyInfected,
       infectionsByRequestedTime: impact.infectionsByRequestedTime,
-      infecPerDay: impact.infecPerDay
+      infecPerDay: impact.infecPerDay,
+      infecPerWeek: impact.infecPerWeek
     },
     severeImpact: {
       currentlyInfected: severeImpact.currentlyInfected,
       infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
-      infecPerDay: severeImpact.infecPerDay
+      infecPerDay: severeImpact.infecPerDay,
+      infecPerWeek: severeImpact.infecPerWeek
     }
   };
 };
