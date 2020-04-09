@@ -32,9 +32,9 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
   if (data.periodType === 'days') {
     return data.timeToElapse;
-  } else if (data.periodType === 'weeks') {
+  } if (data.periodType === 'weeks') {
     return data.timeToElapse * 7;
-  } else if (data.periodType === 'months') {
+  } if (data.periodType === 'months') {
     return data.timeToElapse * 30;
   }
   return {
