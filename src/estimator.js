@@ -42,18 +42,18 @@ const covid19ImpactEstimator = (data) => {
   return {
     data: input,
     impact: {
-      currentlyInfected: impact.currentlyInfected,
-      infectionsByRequestedTime: impact.infectionsByRequestedTime,
-      infecPerDay: impact.infecPerDay,
-      infecPerWeek: impact.infecPerWeek,
-      infecPerMonth: impact.infecPerMonth
+    currentlyInfected: impact.currentlyInfected,
+    infectionsByRequestedTime: impact.infectionsByRequestedTime,
+    infecPerDay: impact.infecPerDay,
+    infecPerWeek: impact.infecPerWeek,
+    infecPerMonth: impact.infecPerMonth
     },
     severeImpact: {
-      currentlyInfected: severeImpact.currentlyInfected,
-      infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
-      infecPerDay: severeImpact.infecPerDay,
-      infecPerWeek: severeImpact.infecPerWeek,
-      infecPerMonth: severeImpact.infecPerMonth
+    currentlyInfected: severeImpact.currentlyInfected,
+    infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
+    infecPerDay: severeImpact.infecPerDay,
+    infecPerWeek: severeImpact.infecPerWeek,
+    infecPerMonth: severeImpact.infecPerMonth
     }
   };
 };
