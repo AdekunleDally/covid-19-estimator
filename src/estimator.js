@@ -40,9 +40,9 @@ const covid19ImpactEstimator = (data) => {
     return (impact.infecPerDay, severeImpact.infecPerDay);
   } if (data.periodType === 'weeks') {
     data.timeToElapse *= 7;
-    // data.timeToElapse *= 7;;
+    // data.timeToElapse *= 7;
     // return (impact.infecPerWeek, severeImpact.infecPerWeek);
-    return (data.timeToElapse)
+    return (data.timeToElapse);
   }
   return {
     data: input,
