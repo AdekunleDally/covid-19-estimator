@@ -37,7 +37,7 @@ const covid19ImpactEstimator = (data) => {
   // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
   switch (data.periodType) {
     case 'months':
-      elapse = Math.trunc(elapsedTime / 3) * 52;
+      elapse = Math.trunc(elapsedTime / 3) * 54;
       break;
     case 'weeks':
       elapse = Math.trunc(elapsedTime / 3) * 7;
