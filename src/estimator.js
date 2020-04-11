@@ -29,16 +29,26 @@ const data = {
 const covid19ImpactEstimator = (data) => {
   const input = data;
   // const elapsedTime = data.timeToElapse;
+  const elapsedTime = data.timeToElapse;
   impact.currentlyInfected = input.reportedCases * 10;
   severeImpact.currentlyInfected = input.reportedCases * 50;
   impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
-  if (data.periodType === 'weeks') {
-    const elapsedTime = data.timeToElapse;
-    const a = severeImpact.currentlyInfected;
-    severeImpact.infecPerDay = a * 2 ** (Math.trunc((elapsedTime * 7) / 3));
-    impact.infecPerDay = impact.currentlyInfected * 2 ** (Math.trunc((elapsedTime * 7) / 3));
+  if (data.period === 'days') {
+    severeImpact.infecPerDay = severeImpact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 3));
+    impact.infecPerDay = impact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 3));
     return (impact.infecPerDay, severeImpact.infecPerDay);
+  } if (data.period === 'weeks') {
+    const b = severeImpact.currentlyInfected;
+    severeImpact.infecPerWeek = b * 2 ** (Math.trunc((elapsedTime * 7) / 3));
+    impact.infecPerWeek = impact.currentlyInfected * 2 ** (Math.trunc((elapsedTime * 7) / 3));
+    return (impact.infecPerWeek, severeImpact.infecPerWeek);
+  }
+  if (data.period === 'months') {
+    const c = severeImpact.currentlyInfected;
+    severeImpact.infecPerMonth = c * 2 ** (Math.trunc((elapsedTime * 30) / 3));
+    impact.infecPerMonth = impact.currentlyInfected * 2 ** (Math.trunc((elapsedTime * 30) / 3));
+    return (impact.infecPerMonth, severeImpact.infecPerMonth);
   }
   return {
     data: input,
