@@ -29,28 +29,25 @@ const data = {
 // eslint-disable-next-line no-shadow
 const covid19ImpactEstimator = (data) => {
   const input = data;
-  // const elapsedTime = data.timeToElapse;
-  let elapsedTime = data.timeToElapse;
+  const elapsedTime = data.timeToElapse;
+  let elapse;
   impact.currentlyInfected = input.reportedCases * 10;
   severeImpact.currentlyInfected = input.reportedCases * 50;
-  impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
-  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
+  // impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
+  // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
   switch (data.periodType) {
     case 'months':
-      elapsedTime = Math.trunc(elapsedTime / 3) * 30;
+      elapse = Math.trunc(elapsedTime / 3) * 30;
       break;
     case 'weeks':
-      elapsedTime = Math.trunc(elapsedTime / 3) * 7;
+      elapse = Math.trunc(elapsedTime / 3) * 7;
       break;
     default:
-      elapsedTime = Math.trunc(elapsedTime / 3);
+      elapse = Math.trunc(elapsedTime / 3);
       break;
   }
-  if (data.periodType === 'days') {
-    severeImpact.infecPerDay = elapsedTime / 30;
-    impact.infecPerDay = elapsedTime / 30;
-    return (impact.infecPerDay, severeImpact.infecPerDay);
-  }
+  impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** elapse);
+  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** elapse);
   return {
     data: input,
     impact: {
