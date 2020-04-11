@@ -34,11 +34,22 @@ const covid19ImpactEstimator = (data) => {
   impact.infectionsByRequestedTime = impact.currentlyInfected * 512;
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 512;
   if (data.period === 'days') {
-    const b = severeImpact.currentlyInfected;
-    severeImpact.infecPerDay = b * 2 ** (Math.trunc((elapsedTime / 3) * 7));
-    impact.infecPerDay = impact.currentlyInfected * 2 ** (Math.trunc((elapsedTime / 3) * 7));
+    severeImpact.infecPerDay = severeImpact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 3));
+    impact.infecPerDay = impact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 3));
     return (impact.infecPerDay, severeImpact.infecPerDay);
-  } /* else if (data.period === 'weeks') {
+  } if (data.period === 'weeks') {
+    const b = severeImpact.currentlyInfected;
+    severeImpact.infecPerWeek = b * 2 ** (Math.trunc((elapsedTime * 7) / 3));
+    impact.infecPerWeek = impact.currentlyInfected * 2 ** (Math.trunc((elapsedTime * 7) / 3));
+    return (impact.infecPerWeek, severeImpact.infecPerWeek);
+  }
+  if (data.period === 'months') {
+    const c = severeImpact.currentlyInfected;
+    severeImpact.infecPerMonth = c * 2 ** (Math.trunc((elapsedTime * 30) / 3));
+    impact.infecPerMonth = impact.currentlyInfected * 2 ** (Math.trunc((elapsedTime * 30) / 3));
+    return (impact.infecPerMonth, severeImpact.infecPerMonth);
+  }
+  /* else if (data.period === 'weeks') {
     const a = (severeImpact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 30)) * 7);
     severeImpact.infecPerWeek = a;
     impact.infecPerWeek = (impact.currentlyInfected * 2 ** (Math.trunc(elapsedTime / 30)) * 7);
@@ -50,12 +61,16 @@ const covid19ImpactEstimator = (data) => {
     impact: {
       currentlyInfected: impact.currentlyInfected,
       infectionsByRequestedTime: impact.infectionsByRequestedTime,
-      infecPerDay: impact.infecPerDay
+      infecPerDay: impact.infecPerDay,
+      infecPerWeek: impact.infecPerWeek,
+      infecPerMonth: impact.infecPerMonth
     },
     severeImpact: {
       currentlyInfected: severeImpact.currentlyInfected,
       infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
-      infecPerDay: severeImpact.infecPerDay
+      infecPerDay: severeImpact.infecPerDay,
+      infecPerWeek: severeImpact.infecPerWeek,
+      infecPerMonth: severeImpact.infecPerMonth
     }
   };
 };
