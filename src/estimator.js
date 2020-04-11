@@ -37,7 +37,7 @@ const covid19ImpactEstimator = (data) => {
   // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
   switch (data.periodType) {
     case 'months':
-      elapse = Math.trunc(elapsedTime / 3) * 30;
+      elapse = Math.trunc(elapsedTime / 3) * 52;
       break;
     case 'weeks':
       elapse = Math.trunc(elapsedTime / 3) * 7;
@@ -52,17 +52,17 @@ const covid19ImpactEstimator = (data) => {
     data: input,
     impact: {
       currentlyInfected: impact.currentlyInfected,
-      infectionsByRequestedTime: impact.infectionsByRequestedTime,
-      infecPerDay: impact.infecPerDay,
-      infecPerWeek: impact.infecPerWeek,
-      infecPerMonth: impact.infecPerMonth
+      infectionsByRequestedTime: impact.infectionsByRequestedTime
+      // infecPerDay: impact.infecPerDay,
+      // infecPerWeek: impact.infecPerWeek,
+      // infecPerMonth: impact.infecPerMonth
     },
     severeImpact: {
       currentlyInfected: severeImpact.currentlyInfected,
-      infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
-      infecPerDay: severeImpact.infecPerDay,
-      infecPerWeek: severeImpact.infecPerWeek,
-      infecPerMonth: severeImpact.infecPerMonth
+      infectionsByRequestedTime: severeImpact.infectionsByRequestedTime
+      // infecPerDay: severeImpact.infecPerDay,
+      // infecPerWeek: severeImpact.infecPerWeek,
+      // infecPerMonth: severeImpact.infecPerMonth
     }
   };
 };
