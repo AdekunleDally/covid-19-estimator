@@ -52,23 +52,31 @@ const covid19ImpactEstimator = (data) => {
   }
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** elapse);
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** elapse);
+  impact.severeCasesByRequestTime = 0.15 * impact.infectionsByRequestedTime;
+  severeImpact.severeCasesByRequestTime = 0.15 * severeImpact.infectionsByRequestedTime;
+  const occupiedBedSpaces = 0.65 * data.totalHospitalBeds;
+  const availableBedSpaces = data.totalHospitalBeds - occupiedBedSpaces;
+  const expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
+  const expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
+  const a = availableBedSpaces - expectedBedAvailabilityImpact;
+  impact.hospitalBedsByRequestedTime = Math.trunc(a);
+  const b = availableBedSpaces - expectedBedAvailabilitySevereImp;
+  severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
   return {
     data: input,
     impact: {
       currentlyInfected: impact.currentlyInfected,
-      infectionsByRequestedTime: impact.infectionsByRequestedTime
-      // infecPerDay: impact.infecPerDay,
-      // infecPerWeek: impact.infecPerWeek,
-      // infecPerMonth: impact.infecPerMonth
+      infectionsByRequestedTime: impact.infectionsByRequestedTime,
+      severeCasesByRequestTime: impact.severeCasesByRequestTime,
+      hospitalBedsByRequestedTime: impact.hospitalBedsByRequestedTime
     },
     severeImpact: {
       currentlyInfected: severeImpact.currentlyInfected,
-      infectionsByRequestedTime: severeImpact.infectionsByRequestedTime
-      // infecPerDay: severeImpact.infecPerDay,
-      // infecPerWeek: severeImpact.infecPerWeek,
-      // infecPerMonth: severeImpact.infecPerMonth
+      infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
+      severeCasesByRequestTime: severeImpact.severeCasesByRequestTime,
+      hospitalBedsByRequestedTime: severeImpact.hospitalBedsByRequestedTime
     }
   };
 };
 covid19ImpactEstimator(data);
-export default covid19ImpactEstimator;
+// export default covid19ImpactEstimator;
