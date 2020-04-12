@@ -1,32 +1,32 @@
 const impact = {
-    currentlyInfected: 0,
-    infectionsByRequestedTime: 0,
-    severeCasesByRequestTime: 0,
-    infecPerDay: 0,
-    infecPerWeek: 0,
-    infectedPeopleOver30Days: 0
-  };
-  const severeImpact = {
-    currentlyInfected: 0,
-    infectionsByRequestedTime: 0,
-    severeCasesByRequestTime: 0,
-    infecPerDay: 0,
-    infecPerWeek: 0,
-    infectedPeopleOver30Days: 0
-  };
-  const data = {
-    region: {
-      name: 'Africa',
-      avgAge: 19.7,
-      avgDailyIncomeInUSD: 5,
-      avgDailyIncomePopulation: 0.71
-    },
-    periodType: 'days',
-    timeToElapse: 58,
-    reportedCases: 674,
-    population: 66622705,
-    totalHospitalBeds: 1380614
-  };
+  currentlyInfected: 0,
+  infectionsByRequestedTime: 0,
+  severeCasesByRequestTime: 0,
+  infecPerDay: 0,
+  infecPerWeek: 0,
+  infectedPeopleOver30Days: 0
+};
+const severeImpact = {
+  currentlyInfected: 0,
+  infectionsByRequestedTime: 0,
+  severeCasesByRequestTime: 0,
+  infecPerDay: 0,
+  infecPerWeek: 0,
+  infectedPeopleOver30Days: 0
+};
+const data = {
+  region: {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+},
+  periodType: 'days',
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+};
   
   // eslint-disable-next-line no-shadow
 const covid19ImpactEstimator = (data) => {
