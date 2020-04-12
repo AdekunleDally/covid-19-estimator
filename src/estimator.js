@@ -52,7 +52,7 @@ const covid19ImpactEstimator = (data) => {
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
       a = expectedBedAvailabilityImpact - availableBedSpaces;
-      b = expectedBedAvailabilityImpact - availableBedSpaces;
+      b = expectedBedAvailabilitySevereImp - availableBedSpaces;
       impact.hospitalBedsByRequestedTime = Math.trunc(a);
       severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
@@ -63,7 +63,7 @@ const covid19ImpactEstimator = (data) => {
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
       a = expectedBedAvailabilityImpact - availableBedSpaces;
-      b = expectedBedAvailabilityImpact - availableBedSpaces;
+      b = expectedBedAvailabilitySevereImp - availableBedSpaces;
       impact.hospitalBedsByRequestedTime = Math.trunc(a);
       severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
@@ -74,7 +74,7 @@ const covid19ImpactEstimator = (data) => {
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
       a = expectedBedAvailabilityImpact - availableBedSpaces;
-      b = expectedBedAvailabilityImpact - availableBedSpaces;
+      b = expectedBedAvailabilitySevereImp - availableBedSpaces;
       impact.hospitalBedsByRequestedTime = Math.trunc(a);
       severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
