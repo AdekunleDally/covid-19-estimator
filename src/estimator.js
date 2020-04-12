@@ -38,6 +38,8 @@ const covid19ImpactEstimator = (data) => {
   let availableBedSpaces;
   let expectedBedAvailabilityImpact;
   let expectedBedAvailabilitySevereImp;
+  let a;
+  let b;
   impact.currentlyInfected = input.reportedCases * 10;
   severeImpact.currentlyInfected = input.reportedCases * 50;
   // impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
@@ -49,6 +51,8 @@ const covid19ImpactEstimator = (data) => {
       availableBedSpaces = data.totalHospitalBeds - occupiedBedSpaces;
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
+      a = availableBedSpaces - expectedBedAvailabilityImpact;
+      b = availableBedSpaces - expectedBedAvailabilitySevereImp;
       break;
     case 'weeks':
       elapse = Math.trunc((elapsedTime / 3) * 7);
@@ -56,6 +60,8 @@ const covid19ImpactEstimator = (data) => {
       availableBedSpaces = data.totalHospitalBeds - occupiedBedSpaces;
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
+      a = availableBedSpaces - expectedBedAvailabilityImpact;
+      b = availableBedSpaces - expectedBedAvailabilitySevereImp;
       break;
     default:
       elapse = Math.trunc(elapsedTime / 3);
@@ -63,13 +69,13 @@ const covid19ImpactEstimator = (data) => {
       availableBedSpaces = data.totalHospitalBeds - occupiedBedSpaces;
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
+      a = availableBedSpaces - expectedBedAvailabilityImpact;
+      b = availableBedSpaces - expectedBedAvailabilitySevereImp;
       break;
   }
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** elapse);
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** elapse);
-  const a = availableBedSpaces - expectedBedAvailabilityImpact;
   impact.hospitalBedsByRequestedTime = Math.trunc(a);
-  const b = availableBedSpaces - expectedBedAvailabilitySevereImp;
   severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
   return {
     data: input,
