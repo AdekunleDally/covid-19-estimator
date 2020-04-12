@@ -62,23 +62,6 @@ const covid19ImpactEstimator = (data) => {
   impact.hospitalBedsByRequestedTime = Math.trunc(a);
   const b = availableBedSpaces - expectedBedAvailabilitySevereImp;
   severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
-  console.log(
-    {
-      data: input,
-      impact: {
-        currentlyInfected: impact.currentlyInfected,
-        infectionsByRequestedTime: impact.infectionsByRequestedTime,
-        severeCasesByRequestTime: impact.severeCasesByRequestTime,
-        hospitalBedsByRequestedTime: impact.hospitalBedsByRequestedTime
-      },
-      severeImpact: {
-        currentlyInfected: severeImpact.currentlyInfected,
-        infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
-        severeCasesByRequestTime: severeImpact.severeCasesByRequestTime,
-        hospitalBedsByRequestedTime: severeImpact.hospitalBedsByRequestedTime
-      }
-    }
-  );
   return {
     data: input,
     impact: {
