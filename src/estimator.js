@@ -41,7 +41,7 @@ const covid19ImpactEstimator = (data) => {
       elapse = Math.trunc((elapsedTime / 3) * 30);
       break;
     case 'weeks':
-      elapse = Math.trunc(elapsedTime / 3) * 7;
+      elapse = Math.trunc((elapsedTime / 3) * 7);
       break;
     default:
       elapse = Math.trunc(elapsedTime / 3);
