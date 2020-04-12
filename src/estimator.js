@@ -20,7 +20,7 @@ const data = {
     avgAge: 19.7,
     avgDailyIncomeInUSD: 5,
     avgDailyIncomePopulation: 0.71
-},
+  },
   periodType: 'days',
   timeToElapse: 58,
   reportedCases: 674,
@@ -28,7 +28,7 @@ const data = {
   totalHospitalBeds: 1380614
 };
   
-  // eslint-disable-next-line no-shadow
+// eslint-disable-next-line no-shadow
 const covid19ImpactEstimator = (data) => {
   const input = data;
   const elapsedTime = data.timeToElapse;
@@ -39,14 +39,14 @@ const covid19ImpactEstimator = (data) => {
   // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
   switch (data.periodType) {
     case 'months':
-    elapse = Math.trunc((elapsedTime / 3) * 30);
-    break;
+      elapse = Math.trunc((elapsedTime / 3) * 30);
+      break;
     case 'weeks':
-    elapse = Math.trunc(elapsedTime / 3) * 7;
-    break;
+      elapse = Math.trunc(elapsedTime / 3) * 7;
+      break;
     default:
-    elapse = Math.trunc(elapsedTime / 3);
-    break;
+      elapse = Math.trunc(elapsedTime / 3);
+      break;
   }
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** elapse);
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** elapse);
@@ -66,4 +66,3 @@ const covid19ImpactEstimator = (data) => {
 };
 covid19ImpactEstimator(data);
 // export default covid19ImpactEstimator;
-  
