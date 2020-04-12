@@ -1,6 +1,8 @@
 const impact = {
   currentlyInfected: 0,
   infectionsByRequestedTime: 0,
+  severeCasesByRequestTime: 0,
+  hospitalBesdByRequestedTime: 0,
   infecPerDay: 0,
   infecPerWeek: 0,
   infectedPeopleOver30Days: 0
@@ -8,6 +10,8 @@ const impact = {
 const severeImpact = {
   currentlyInfected: 0,
   infectionsByRequestedTime: 0,
+  severeCasesByRequestTime: 0,
+  hospitalBesdByRequestedTime: 0,
   infecPerDay: 0,
   infecPerWeek: 0,
   infectedPeopleOver30Days: 0
