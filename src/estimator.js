@@ -27,7 +27,6 @@ const data = {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
-  
 // eslint-disable-next-line no-shadow
 const covid19ImpactEstimator = (data) => {
   const input = data;
