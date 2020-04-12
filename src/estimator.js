@@ -84,16 +84,16 @@ const covid19ImpactEstimator = (data) => {
   return {
     data: input,
     impact: {
+      hospitalBedsByRequestedTime: impact.hospitalBedsByRequestedTime
       currentlyInfected: impact.currentlyInfected,
       infectionsByRequestedTime: impact.infectionsByRequestedTime,
       severeCasesByRequestTime: impact.severeCasesByRequestTime,
-      hospitalBedsByRequestedTime: impact.hospitalBedsByRequestedTime
     },
     severeImpact: {
+      hospitalBedsByRequestedTime: impact.hospitalBedsByRequestedTime,
       currentlyInfected: severeImpact.currentlyInfected,
       infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
       severeCasesByRequestTime: severeImpact.severeCasesByRequestTime,
-      hospitalBedsByRequestedTime: severeImpact.hospitalBedsByRequestedTime
     }
   };
 };
