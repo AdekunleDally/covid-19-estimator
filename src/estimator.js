@@ -51,8 +51,8 @@ const covid19ImpactEstimator = (data) => {
       availableBedSpaces = data.totalHospitalBeds - occupiedBedSpaces;
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
-      a = availableBedSpaces - expectedBedAvailabilityImpact;
-      b = availableBedSpaces - expectedBedAvailabilitySevereImp;
+      a = expectedBedAvailabilityImpact - availableBedSpaces;
+      b = expectedBedAvailabilityImpact - availableBedSpaces;
       impact.hospitalBedsByRequestedTime = Math.trunc(a);
       severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
@@ -62,8 +62,8 @@ const covid19ImpactEstimator = (data) => {
       availableBedSpaces = data.totalHospitalBeds - occupiedBedSpaces;
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
-      a = availableBedSpaces - expectedBedAvailabilityImpact;
-      b = availableBedSpaces - expectedBedAvailabilitySevereImp;
+      a = expectedBedAvailabilityImpact - availableBedSpaces;
+      b = expectedBedAvailabilityImpact - availableBedSpaces;
       impact.hospitalBedsByRequestedTime = Math.trunc(a);
       severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
@@ -73,8 +73,8 @@ const covid19ImpactEstimator = (data) => {
       availableBedSpaces = data.totalHospitalBeds - occupiedBedSpaces;
       expectedBedAvailabilityImpact = 0.35 * impact.severeCasesByRequestTime;
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
-      a = availableBedSpaces - expectedBedAvailabilityImpact;
-      b = availableBedSpaces - expectedBedAvailabilitySevereImp;
+      a = expectedBedAvailabilityImpact - availableBedSpaces;
+      b = expectedBedAvailabilityImpact - availableBedSpaces;
       impact.hospitalBedsByRequestedTime = Math.trunc(a);
       severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
