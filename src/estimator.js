@@ -53,6 +53,8 @@ const covid19ImpactEstimator = (data) => {
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
       a = availableBedSpaces - expectedBedAvailabilityImpact;
       b = availableBedSpaces - expectedBedAvailabilitySevereImp;
+      impact.hospitalBedsByRequestedTime = Math.trunc(a);
+      severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
     case 'weeks':
       elapse = Math.trunc((elapsedTime / 3) * 7);
@@ -62,6 +64,8 @@ const covid19ImpactEstimator = (data) => {
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
       a = availableBedSpaces - expectedBedAvailabilityImpact;
       b = availableBedSpaces - expectedBedAvailabilitySevereImp;
+      impact.hospitalBedsByRequestedTime = Math.trunc(a);
+      severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
     default:
       elapse = Math.trunc(elapsedTime / 3);
@@ -71,12 +75,12 @@ const covid19ImpactEstimator = (data) => {
       expectedBedAvailabilitySevereImp = 0.35 * severeImpact.severeCasesByRequestTime;
       a = availableBedSpaces - expectedBedAvailabilityImpact;
       b = availableBedSpaces - expectedBedAvailabilitySevereImp;
+      impact.hospitalBedsByRequestedTime = Math.trunc(a);
+      severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
       break;
   }
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** elapse);
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** elapse);
-  impact.hospitalBedsByRequestedTime = Math.trunc(a);
-  severeImpact.hospitalBedsByRequestedTime = Math.trunc(b);
   return {
     data: input,
     impact: {
