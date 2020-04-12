@@ -62,7 +62,6 @@ const covid19ImpactEstimator = (data) => {
     casesForVentilatorsByRequestedTime: requireVentilatorTwo,
     dollarsInFlight: dollarsLostTwo
   };
-  console.log(data,impact,severeImpact)
   return {
     data: input,
     impact,
