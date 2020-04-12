@@ -2,7 +2,7 @@ const impact = {
   currentlyInfected: 0,
   infectionsByRequestedTime: 0,
   severeCasesByRequestTime: 0,
-  hospitalBesdByRequestedTime: 0,
+  hospitalBedsByRequestedTime: 0,
   infecPerDay: 0,
   infecPerWeek: 0,
   infectedPeopleOver30Days: 0
@@ -11,7 +11,7 @@ const severeImpact = {
   currentlyInfected: 0,
   infectionsByRequestedTime: 0,
   severeCasesByRequestTime: 0,
-  hospitalBesdByRequestedTime: 0,
+  hospitalBedsByRequestedTime: 0,
   infecPerDay: 0,
   infecPerWeek: 0,
   infectedPeopleOver30Days: 0
