@@ -51,8 +51,8 @@ const covid19ImpactEstimator = (data) => {
   }
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** elapse);
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** elapse);
-  impact.severeCasesByRequestedTime = 0.15 * impact.infectionsByRequestedTime;
-  severeImpact.severeCasesByRequestedTime = 0.15 * severeImpact.infectionsByRequestedTime;
+  const impactSevereCasesByRequestedTime = 0.15 * impact.infectionsByRequestedTime;
+  const severeImpactSevereCasesByRequestedTime = 0.15 * severeImpact.infectionsByRequestedTime;
   const a = Math.trunc((data.totalHospitalBeds * 0.35) - impact.severeCasesByRequestedTime);
   impact.hospitalBedsByRequestedTime = a;
   const b = Math.trunc((data.totalHospitalBeds * 0.35) - severeImpact.severeCasesByRequestedTime);
@@ -62,13 +62,13 @@ const covid19ImpactEstimator = (data) => {
     impact: {
       currentlyInfected: impact.currentlyInfected,
       infectionsByRequestedTime: impact.infectionsByRequestedTime,
-      severeCasesByRequestTime: impact.severeCasesByRequestedTime,
+      severeCasesByRequestTime: impactSevereCasesByRequestedTime,
       hospitalBedsByRequestedTime: impact.hospitalBedsByRequestedTime
     },
     severeImpact: {
       currentlyInfected: severeImpact.currentlyInfected,
       infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
-      severeCasesByRequestTime: severeImpact.severeCasesByRequestedTime,
+      severeCasesByRequestTime: severeImpactSevereCasesByRequestedTime,
       hospitalBedsByRequestedTime: severeImpact.hospitalBedsByRequestedTime
     }
   };
