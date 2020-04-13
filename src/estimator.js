@@ -24,13 +24,11 @@ const covid19ImpactEstimator = (data) => {
   const infectedTwo = input.reportedCases * 50;
   const infectedBytimeOne = infectedOne * (2 ** Math.trunc(period / 3));
   const infectedBytimeTwo = infectedTwo * (2 ** Math.trunc(period / 3));
-
   // Challenge Two:
   const severeInfectionsBytimeOne = 0.15 * infectedBytimeOne;
   const severeInfectionsBytimeTwo = 0.15 * infectedBytimeTwo;
   const availableBedsOne = Math.trunc((input.totalHospitalBeds * 0.35) - severeInfectionsBytimeOne);
   const availableBedsTwo = Math.trunc((input.totalHospitalBeds * 0.35) - severeInfectionsBytimeTwo);
-  
   // Challenge Three:
   // impact on ICUs
   const requireICUone = Math.trunc(0.05 * infectedBytimeOne);
@@ -62,7 +60,6 @@ const covid19ImpactEstimator = (data) => {
     casesForVentilatorsByRequestedTime: requireVentilatorTwo,
     dollarsInFlight: dollarsLostTwo
   };
-  console.log(data,impact,severeImpact)
   return {
     data: input,
     impact,
