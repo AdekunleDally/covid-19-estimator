@@ -49,7 +49,7 @@ const covid19ImpactEstimator = (data) => {
     severeCasesByRequestTime: severeInfectionsByTimeTwo,
     hospitalBedsByRequestedTime: hospitalBedsByB
   };
-  console.log(data,impact,severeImpact);
+  console.log(data, impact, severeImpact)
   return {
     data: input,
     impact,
