@@ -42,13 +42,14 @@ const covid19ImpactEstimator = (data) => {
     infectionsByRequestedTime: impactInfectionsByRequestedTime,
     severeCasesByRequestTime: severeInfectionsByTimeOne,
     hospitalBedsByRequestedTime: hospitalBedsByA
-  }
+  };
   const severeImpact = {
     currentlyInfected: severeImpactCurrentlyInfected,
     infectionsByRequestedTime: severeImpactInfectionsByRequestedTime,
     severeCasesByRequestTime: severeInfectionsByTimeTwo,
     hospitalBedsByRequestedTime: hospitalBedsByB
-  }
+  };
+  console.log(data,impact,severeImpact);
   return {
     data: input,
     impact,
