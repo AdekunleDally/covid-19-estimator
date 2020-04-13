@@ -1,71 +1,46 @@
+// eslint-disable-next-line no-shadow
 const covid19ImpactEstimator = (data) => {
-  // Normalise the time in days, weeks and months
-  // eslint-disable-next-line no-shadow
-  const normalisedPeriod = (data) => {
-    const period = data.periodType;
-    const timeElapsed = data.timeToElapse;
-    const elapsedTime = timeElapsed.toString().toLowerCase();
-    switch (period) {
-      case 'days':
-        return elapsedTime;
-      case 'weeks':
-        return elapsedTime * 7;
-      case 'months':
-        return elapsedTime * 30;
-      default:
-        break;
-    }
-    return data;
-  };
-  // Challenge One:
   const input = data;
-  const period = normalisedPeriod(input);
-  const infectedOne = input.reportedCases * 10;
-  const infectedTwo = input.reportedCases * 50;
-  const infectedBytimeOne = infectedOne * (2 ** Math.trunc(period / 3));
-  const infectedBytimeTwo = infectedTwo * (2 ** Math.trunc(period / 3));
-
-  // Challenge Two:
-  const severeInfectionsBytimeOne = 0.15 * infectedBytimeOne;
-  const severeInfectionsBytimeTwo = 0.15 * infectedBytimeTwo;
-  const availableBedsOne = Math.trunc((input.totalHospitalBeds * 0.35) - severeInfectionsBytimeOne);
-  const availableBedsTwo = Math.trunc((input.totalHospitalBeds * 0.35) - severeInfectionsBytimeTwo);
-
-  // Challenge Three:
-  // impact on ICUs
-  const requireICUone = Math.trunc(0.05 * infectedBytimeOne);
-  const requireICUtwo = Math.trunc(0.05 * infectedBytimeTwo);
-  // Impact on Ventilators
-  const requireVentilatorOne = Math.trunc(infectedBytimeOne * 0.02);
-  const requireVentilatorTwo = Math.trunc(infectedBytimeTwo * 0.02);
-  // Impact on the Economy
-  // eslint-disable-next-line max-len
-  const dollarsLostOne = Math.trunc((infectedBytimeOne * input.region.avgDailyIncomePopulation * input.region.avgDailyIncomeInUSD) / period);
-  // eslint-disable-next-line max-len
-  const dollarsLostTwo = Math.trunc((infectedBytimeTwo * input.region.avgDailyIncomePopulation * input.region.avgDailyIncomeInUSD) / period);
-
-  const impact = {
-    currentlyInfected: infectedOne,
-    infectionsByRequestedTime: infectedBytimeOne,
-    severeCasesByRequestedTime: severeInfectionsBytimeOne,
-    hospitalBedsByRequestedTime: availableBedsOne,
-    casesForICUByRequestedTime: requireICUone,
-    casesForVentilatorsByRequestedTime: requireVentilatorOne,
-    dollarsInFlight: dollarsLostOne
-  };
-  const severeImpact = {
-    currentlyInfected: infectedTwo,
-    infectionsByRequestedTime: infectedBytimeTwo,
-    severeCasesByRequestedTime: severeInfectionsBytimeTwo,
-    hospitalBedsByRequestedTime: availableBedsTwo,
-    casesForICUByRequestedTime: requireICUtwo,
-    casesForVentilatorsByRequestedTime: requireVentilatorTwo,
-    dollarsInFlight: dollarsLostTwo
-  };
+  const elapsedTime = data.timeToElapse;
+  let elapse;
+  impact.currentlyInfected = input.reportedCases * 10;
+  severeImpact.currentlyInfected = input.reportedCases * 50;
+  // impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
+  // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
+  switch (data.periodType) {
+    case 'months':
+      elapse = Math.trunc((elapsedTime / 3) * 30);
+      break;
+    case 'weeks':
+      elapse = Math.trunc((elapsedTime / 3) * 7);
+      break;
+    default:
+      elapse = Math.trunc(elapsedTime / 3);
+      break;
+  }
+  impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** elapse);
+  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** elapse);
+  const impactSevereCasesByRequestedTime = 0.15 * impact.infectionsByRequestedTime;
+  const severeImpactSevereCasesByRequestedTime = 0.15 * severeImpact.infectionsByRequestedTime;
+  const a = Math.trunc(impactSevereCasesByRequestedTime - (data.totalHospitalBeds * 0.35));
+  const hospitalBedsByRequestedTimeA = a;
+  const b = Math.trunc(severeImpactSevereCasesByRequestedTime - (data.totalHospitalBeds * 0.35));
+  const hospitalBedsByRequestedTimeB = b;
   return {
     data: input,
-    impact,
-    severeImpact
+    impact: {
+      currentlyInfected: impact.currentlyInfected,
+      infectionsByRequestedTime: impact.infectionsByRequestedTime,
+      severeCasesByRequestTime: impactSevereCasesByRequestedTime,
+      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeA
+    },
+    severeImpact: {
+      currentlyInfected: severeImpact.currentlyInfected,
+      infectionsByRequestedTime: severeImpact.infectionsByRequestedTime,
+      severeCasesByRequestTime: severeImpactSevereCasesByRequestedTime,
+      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeB
+    }
   };
 };
-module.exports = covid19ImpactEstimator;
+covid19ImpactEstimator(data);
+export default covid19ImpactEstimator;
