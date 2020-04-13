@@ -14,13 +14,13 @@ const data = {
 // eslint-disable-next-line no-shadow
 const covid19ImpactEstimator = (data) => {
   const input = data;
-  const elapsedTime = data.timeToElapse;
+  const elapsedTime = input.timeToElapse;
   let elapse;
   const impactCurrentlyInfected = input.reportedCases * 10;
   const severeImpactCurrentlyInfected = input.reportedCases * 50;
   // impact.infectionsByRequestedTime = impact.currentlyInfected * 1024;
   // severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
-  switch (data.periodType) {
+  switch (input.periodType) {
     case 'months':
       elapse = Math.trunc((elapsedTime / 3) * 30);
       break;
@@ -53,5 +53,5 @@ const covid19ImpactEstimator = (data) => {
     }
   };
 };
-covid19ImpactEstimator(data);
+covid19ImpactEstimator(input);
 export default covid19ImpactEstimator;
