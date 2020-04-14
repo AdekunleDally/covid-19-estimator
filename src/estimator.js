@@ -5,6 +5,31 @@ const casesReported = document.querySelector('#data-reported-cases');
 const hospitalBedsTotal = document.querySelector('#data-total-hospital-beds');
 const typePeriod = document.querySelector('#data-period-type');
 const displayResult = document.querySelector('.row');
+// const button = document.querySelector('#data-go-estimate');
+/* population.value, elapseTime.value, casesReported.value,
+   hospitalBedsTotal.value, typePeriod.value */
+/* console.log(population.value, elapseTime.value, casesReported.value,
+   hospitalBedsTotal.value, typePeriod)
+*/
+const data = {
+  region: {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  },
+  periodType: 'days',
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+};
+/*
+  const result = [
+  population.value, timeToElapse.value, reportedCases.value,
+  totalHospitalBeds.value, periodType.value
+  ];
+*/
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const result = [
