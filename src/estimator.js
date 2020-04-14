@@ -1,35 +1,10 @@
-const form = document.querySelector('.covid-estimate-form');
-const population = document.querySelector('#data-population');
-const timeToElapse = document.querySelector('#data-time-to-elapse');
-const reportedCases = document.querySelector('#data-reported-cases');
-const totalHospitalBeds = document.querySelector('#data-total-hospital-beds');
-const periodType = document.querySelector('#data-period-type');
-// const button = document.querySelector('#data-go-estimate');
-/* population.value, timeToElapse.value, reportedCases.value,
-    totalHospitalBeds.value periodType.value */
-/* console.log(population.value, timeToElapse.value, reportedCases.value,
-   totalHospitalBeds.value)
-*/
-const data = {
-  region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
-  },
-  periodType: 'days',
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
-};
-const covid19ImpactEstimator = () => {
+const covid19ImpactEstimator = (data) => {
   // Normalise the time in days, weeks and months
   // eslint-disable-next-line no-shadow
   const normalisedPeriod = (data) => {
-    const period = data.periodType; // result[4]
-    const timeElapsed = data.timeToElapse; // result[1]
-    const elapsedTime = timeElapsed.toString().toLowerCase();// result[1]
+    const period = data.periodType;
+    const timeElapsed = data.timeToElapse;
+    const elapsedTime = timeElapsed.toString().toLowerCase();
     switch (period) {
       case 'days':
         return elapsedTime;
@@ -45,8 +20,8 @@ const covid19ImpactEstimator = () => {
   // Challenge One:
   const input = data;
   const period = normalisedPeriod(input);
-  const infectedOne = input.reportedCases * 10; // reportedCases= result[2]
-  const infectedTwo = input.reportedCases * 50; // reportedCases= result[2]
+  const infectedOne = input.reportedCases * 10;
+  const infectedTwo = input.reportedCases * 50;
   const infectedBytimeOne = infectedOne * (2 ** Math.trunc(period / 3));
   const infectedBytimeTwo = infectedTwo * (2 ** Math.trunc(period / 3));
 
@@ -55,6 +30,7 @@ const covid19ImpactEstimator = () => {
   const severeInfectionsBytimeTwo = 0.15 * infectedBytimeTwo;
   const availableBedsOne = Math.trunc((input.totalHospitalBeds * 0.35) - severeInfectionsBytimeOne);
   const availableBedsTwo = Math.trunc((input.totalHospitalBeds * 0.35) - severeInfectionsBytimeTwo);
+  
   // Challenge Three:
   // impact on ICUs
   const requireICUone = Math.trunc(0.05 * infectedBytimeOne);
@@ -86,12 +62,10 @@ const covid19ImpactEstimator = () => {
     casesForVentilatorsByRequestedTime: requireVentilatorTwo,
     dollarsInFlight: dollarsLostTwo
   };
-  console.log(data, impact, severeImpact);
   return {
     data: input,
     impact,
     severeImpact
   };
 };
-covid19ImpactEstimator(data);
-// export default covid19ImpactEstimator;
+module.exports = covid19ImpactEstimator;
