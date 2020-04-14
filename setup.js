@@ -22,3 +22,4 @@ global.cancelAnimationFrame = function (id) {
   clearTimeout(id);
 };
 copyProps(window, global);
+// >>>>>>> 9a8277d367808bf1e2d9bfa6391c186cbcccee54
