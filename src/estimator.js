@@ -23,13 +23,6 @@ const data = {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const result = [
-    population.value, timeToElapse.value, reportedCases.value,
-    totalHospitalBeds.value, periodType.value
-  ];
-});
 const covid19ImpactEstimator = () => {
   // Normalise the time in days, weeks and months
   // eslint-disable-next-line no-shadow
