@@ -1,3 +1,11 @@
+/**
+ * @jest-environment jsdom
+ */
+
+test('use jsdom in this test file', () => {
+  const element = document.createElement('div');
+  expect(element).not.toBeNull();
+});
 const form = document.querySelector('.data-go-estimate');
 const population = document.querySelector('#data-population');
 const elapseTime = document.querySelector('#data-time-to-elapse');
