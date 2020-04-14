@@ -131,5 +131,6 @@ form.addEventListener('submit', (e) => {
   form.reset();
   displayResult.style.display = 'flex';
   covid19ImpactEstimator(data);
-});
   module.exports = covid19ImpactEstimator;
+});
+
