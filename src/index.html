@@ -1,11 +1,192 @@
-<html lang="en">
-<head>
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="styles.css"></link>-->
+    <style>
+      html{
+        font-size: 18pt;
+      }
+      body{
+       /* background: #eeedec; */
+        background:#949499;
+        background-size: 3em;
+        letter-spacing: 0.2em;
+        color:black;
+      }
+      .row {
+        display:none;
+        }
+        .form-group{
+        font-size: 18pt;
+        }
+    </style>
     <title>COVID-19 ESTIMATOR</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <div class="container my-5 mx-auto">
+      <h1 class="text-center my-4"> COVID-19 ESTIMATOR</h1>
+      <form class="data-go-estimate">
+        <div class="form-group">
+          <label for="population"> Enter Population Number </label>
+          <input type="number" class="form-control" id="data-population">
+        </div>
+        <div class="form-group">
+          <label for="Time-to-Elapse">Time To Elapse</label>
+          <input type="number" class="form-control" id="data-time-to-elapse" placeholder="">
+        </div>
+        <div class="form-group">
+          <label class="form-check-label" for="data-reported-cases">Reported Cases</label>
+          <input type="number" class="form-control" id="data-reported-cases">  
+        </div>
+        <div class="form-group">
+          <label class="form-check-label" for="total-Hospital-Beds">Total Hospital Beds</label>
+          <input type="number" class="form-control" id="data-total-hospital-beds">  
+        </div>
+        <div class="form-group">
+          <label class="form-check-label" for="period-type">Period Type</label>
+          <select class="form-control" id="data-period-type">
+            <option>days</option>
+            <option>weeks</option>
+            <option>months</option>
+          </select>
+        </div>
+        <button type="submit" value="submit" class="btn btn-primary" id="data-go-estimate">Submit</button>
+      </form>
+      <div class="row" > <!--Card Starts-->
+        <div class="mt-2 col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Population</h5>
+              <p class="card-text" id="card-text 1"></p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Impact Currently Infected</h5>
+              <p class="card-text" id="card-text 2"></p>
+            </div>
+          </div>
+        </div><!---->
+        <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Severe Impact Currently Infected</h5>
+                <p class="card-text" id="card-text 3"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Impact Infections By Requested Time</h5>
+                <p class="card-text" id="card-text 4"></p>  
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"> Severe Impact Infections By Requested Time</h5>
+                <p class="card-text" id="card-text 5"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Impact Severe Cases By Requested Time</h5>
+                <p class="card-text" id="card-text 6"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Severe Impact Severe Cases By Requested Time</h5>
+                <p class="card-text" id="card-text 7"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Impact Hospital Beds By Requested Time</h5>
+                <p class="card-text" id="card-text 8"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Severe Impact Hospital Beds By Requested Time</h5>
+                <p class="card-text" id="card-text 9"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Impact Cases For ICU By Requested Time</h5>
+                <p class="card-text" id="card-text 10"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Severe Impact Cases For ICU By Requested Time</h5>
+                <p class="card-text" id="card-text 11"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Impact Cases For Ventilators By Requested Time</h5>
+                <p class="card-text" id="card-text 12"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Severe Impact Cases For Ventilators By Requested Time</h5>
+                <p class="card-text"id="card-text 13"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Impact Dollars In Flight</h5>
+                <p class="card-text" id="card-text 14"></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 col-sm-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Severe Impact Dollars In Flight</h5>
+                <p class="card-text"id="card-text 15"></p>
+              </div>
+            </div>
+          </div>
+      </div> <!--Card Ends-->
+    </div>  
     <script src="estimator.js"></script>
-</body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.14.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.14.0/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+  </body>
 </html>
