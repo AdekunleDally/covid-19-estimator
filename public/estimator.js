@@ -114,6 +114,7 @@ form.addEventListener('submit', (e) => {
     document.getElementById('card-text 13').innerHTML = severeImpact.casesForVentilatorsByRequestedTime;
     document.getElementById('card-text 14').innerHTML = impact.dollarsInFlight;
     document.getElementById('card-text 15').innerHTML = severeImpact.dollarsInFlight;
+    console.log(data, impact, severeImpact);
     return {
       data: input,
       impact,
