@@ -1,3 +1,11 @@
+/**
+ * @jest-environment jsdom
+ */
+
+test('use jsdom in this test file', () => {
+  const element = document.createElement('div');
+  expect(element).not.toBeNull();
+});
 const form = document.querySelector('.data-go-estimate');
 const population = document.querySelector('#data-population');
 const elapseTime = document.querySelector('#data-time-to-elapse');
@@ -123,5 +131,15 @@ form.addEventListener('submit', (e) => {
   form.reset();
   displayResult.style.display = 'flex';
   covid19ImpactEstimator(data);
+<<<<<<< HEAD
+<<<<<<< HEAD
+// export default covid19ImpactEstimator;
+});
+=======
+});
+  module.exports = covid19ImpactEstimator;
+>>>>>>> 58b89842c4847d2667ad278debf0640c0b6a9587
+=======
   module.exports = covid19ImpactEstimator;
 });
+>>>>>>> 9a8277d367808bf1e2d9bfa6391c186cbcccee54
