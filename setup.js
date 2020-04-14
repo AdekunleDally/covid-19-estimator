@@ -1,25 +1,39 @@
-const { JSDOM } = require('jsdom');
+// my-custom-environment
+const NodeEnvironment = require('jest-environment-node');
 
-const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
-const { window } = jsdom;
+class CustomEnvironment extends NodeEnvironment {
+  constructor(config, context) {
+    super(config, context);
+    this.testPath = context.testPath;
+    this.docblockPragmas = context.docblockPragmas;
+  }
 
-function copyProps(src, target) {
-  Object.defineProperties(target, {
-    ...Object.getOwnPropertyDescriptors(src),
-    ...Object.getOwnPropertyDescriptors(target)
-  });
+  async setup() {
+    await super.setup();
+    await someSetupTasks(this.testPath);
+    this.global.someGlobalObject = createGlobalObject();
+
+    // Will trigger if docblock contains @my-custom-pragma my-pragma-value
+    if (this.docblockPragmas['my-custom-pragma'] === 'my-pragma-value') {
+      // ...
+    }
+  }
+
+  async teardown() {
+    this.global.someGlobalObject = destroyGlobalObject();
+    await someTeardownTasks();
+    await super.teardown();
+  }
+
+  runScript(script) {
+    return super.runScript(script);
+  }
+
+  async handleTestEvent(event, state) {
+    if (event.name === 'test_start') {
+      // ...
+    }
+  }
 }
 
-global.window = window;
-global.document = window.document;
-global.navigator = {
-  userAgent: 'node.js'
-};
-global.requestAnimationFrame = function (callback) {
-  return setTimeout(callback, 0);
-};
-global.cancelAnimationFrame = function (id) {
-  clearTimeout(id);
-};
-copyProps(window, global);
-// >>>>>>> 9a8277d367808bf1e2d9bfa6391c186cbcccee54
+module.exports = CustomEnvironment;
