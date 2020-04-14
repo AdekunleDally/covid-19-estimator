@@ -4,7 +4,6 @@ const elapseTime = document.querySelector('#data-time-to-elapse');
 const casesReported = document.querySelector('#data-reported-cases');
 const hospitalBedsTotal = document.querySelector('#data-total-hospital-beds');
 const typePeriod = document.querySelector('#data-period-type');
-const displayResult = document.querySelector('.row');
 // const button = document.querySelector('#data-go-estimate');
 /* population.value, elapseTime.value, casesReported.value,
    hospitalBedsTotal.value, typePeriod.value */
@@ -99,29 +98,13 @@ form.addEventListener('submit', (e) => {
       casesForVentilatorsByRequestedTime: requireVentilatorTwo,
       dollarsInFlight: dollarsLostTwo
     };
-    document.getElementById('card-text 1').innerHTML = impact.population;
-    document.getElementById('card-text 2').innerHTML = impact.currentlyInfected;
-    document.getElementById('card-text 3').innerHTML = severeImpact.currentlyInfected;
-    document.getElementById('card-text 4').innerHTML = impact.infectionsByRequestedTime;
-    document.getElementById('card-text 5').innerHTML = severeImpact.infectionsByRequestedTime;
-    document.getElementById('card-text 6').innerHTML = impact.severeCasesByRequestedTime;
-    document.getElementById('card-text 7').innerHTML = severeImpact.severeCasesByRequestedTime;
-    document.getElementById('card-text 8').innerHTML = impact.hospitalBedsByRequestedTime;
-    document.getElementById('card-text 9').innerHTML = severeImpact.hospitalBedsByRequestedTime;
-    document.getElementById('card-text 10').innerHTML = impact.casesForICUByRequestedTime;
-    document.getElementById('card-text 11').innerHTML = severeImpact.casesForICUByRequestedTime;
-    document.getElementById('card-text 12').innerHTML = impact.casesForVentilatorsByRequestedTime;
-    document.getElementById('card-text 13').innerHTML = severeImpact.casesForVentilatorsByRequestedTime;
-    document.getElementById('card-text 14').innerHTML = impact.dollarsInFlight;
-    document.getElementById('card-text 15').innerHTML = severeImpact.dollarsInFlight;
+    // console.log(data, impact, severeImpact);
     return {
       data: input,
       impact,
       severeImpact
     };
   };
-  form.reset();
-  displayResult.style.display = 'flex';
   covid19ImpactEstimator(data);
 // export default covid19ImpactEstimator;
 });
