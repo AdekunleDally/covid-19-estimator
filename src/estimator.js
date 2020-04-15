@@ -9,7 +9,7 @@ test('use jsdom in this test file', () => {
 const jsdom = require('jsdom');
 
 const { JSDOM } = jsdom;
-const { window } = new JSDOM('./index.html');
+const { window } = new JSDOM('index.html');
 const form = window.document.querySelector('.data-go-estimate');
 const population = window.document.querySelector('#data-population');
 const elapseTime = window.document.querySelector('#data-time-to-elapse');
