@@ -7,12 +7,11 @@
     <!--<link rel="stylesheet" href="styles.css"></link>-->
     <style>
       body{
-        background-color : brown;
+        background-color : #949499;
       }
       .row {
           display:none;
       }
-=======
       html{
         font-size: 18pt;
       }
@@ -33,12 +32,12 @@
     <title>COVID-19 ESTIMATOR</title>
   </head>
   <body>
-    <div class="container my-5 mx-auto">
-      <h1 class="text-center my-4"> COVID-19 ESTIMATOR</h1>
+    <div class>
+      <h1> COVID-19 ESTIMATOR</h1>
       <form class="data-go-estimate">
         <div class="form-group">
           <label for="population"> Enter Population Number </label>
-          <input type="number" class="form-control" id="data-population">
+          <input type="number" id="data-population">
         </div>
         <div class="form-group">
           <label for="Time-to-Elapse">Time To Elapse</label>
@@ -60,10 +59,10 @@
             <option>months</option>
           </select>
         </div>
-        <button type="submit" value="submit" class="btn btn-primary" id="data-go-estimate">Submit</button>
+        <button type="submit" value="submit" id="data-go-estimate">Submit</button>
       </form>
       <div class="row" > <!--Card Starts-->
-        <div class="mt-2 col-sm-3">
+        <div class="col-sm-3">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Population</h5>
@@ -71,7 +70,7 @@
             </div>
           </div>
         </div>
-        <div class="mt-2 col-sm-3">
+        <div class="col-sm-3">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Impact Currently Infected</h5>
@@ -79,7 +78,7 @@
             </div>
           </div>
         </div><!---->
-        <div class="mt-2 col-sm-3">
+        <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Severe Impact Currently Infected</h5>
@@ -87,7 +86,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Impact Infections By Requested Time</h5>
@@ -95,7 +94,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"> Severe Impact Infections By Requested Time</h5>
@@ -103,7 +102,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Impact Severe Cases By Requested Time</h5>
@@ -111,7 +110,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Severe Impact Severe Cases By Requested Time</h5>
@@ -119,7 +118,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Impact Hospital Beds By Requested Time</h5>
@@ -127,7 +126,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Severe Impact Hospital Beds By Requested Time</h5>
@@ -135,7 +134,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Impact Cases For ICU By Requested Time</h5>
@@ -143,7 +142,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Severe Impact Cases For ICU By Requested Time</h5>
@@ -151,7 +150,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Impact Cases For Ventilators By Requested Time</h5>
@@ -159,7 +158,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Severe Impact Cases For Ventilators By Requested Time</h5>
@@ -167,7 +166,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Impact Dollars In Flight</h5>
@@ -175,7 +174,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-2 col-sm-3">
+          <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Severe Impact Dollars In Flight</h5>
