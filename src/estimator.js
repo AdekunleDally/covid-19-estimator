@@ -1,9 +1,9 @@
-const form = document.querySelector('.data-go-estimate');
-const population = document.querySelector('#data-population');
-const elapseTime = document.querySelector('#data-time-to-elapse');
-const casesReported = document.querySelector('#data-reported-cases');
-const hospitalBedsTotal = document.querySelector('#data-total-hospital-beds');
-const typePeriod = document.querySelector('#data-period-type');
+const form = window.document.querySelector('.data-go-estimate');
+const population = window.document.querySelector('#data-population');
+const elapseTime = window.document.querySelector('#data-time-to-elapse');
+const casesReported = window.document.querySelector('#data-reported-cases');
+const hospitalBedsTotal = window.document.querySelector('#data-total-hospital-beds');
+const typePeriod = window.document.querySelector('#data-period-type');
 const data = {
   region: {
     name: 'Africa',
