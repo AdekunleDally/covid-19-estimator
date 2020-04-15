@@ -1,21 +1,16 @@
-/**
- * @jest-environment jsdom
- */
-
-test('use jsdom in this test file', () => {
-  const element = document.createElement('div');
-  expect(element).not.toBeNull();
-});
-const jsdom = require('jsdom');
-
-const { JSDOM } = jsdom;
-const { window } = new JSDOM('index.html');
-const form = window.document.querySelector('.data-go-estimate');
-const population = window.document.querySelector('#data-population');
-const elapseTime = window.document.querySelector('#data-time-to-elapse');
-const casesReported = window.document.querySelector('#data-reported-cases');
-const hospitalBedsTotal = window.document.querySelector('#data-total-hospital-beds');
-const typePeriod = window.document.querySelector('#data-period-type');
+const form = document.querySelector('.data-go-estimate');
+const population = document.querySelector('#data-population');
+const elapseTime = document.querySelector('#data-time-to-elapse');
+const casesReported = document.querySelector('#data-reported-cases');
+const hospitalBedsTotal = document.querySelector('#data-total-hospital-beds');
+const typePeriod = document.querySelector('#data-period-type');
+const displayResult = document.querySelector('.row');
+// const button = document.querySelector('#data-go-estimate');
+/* population.value, elapseTime.value, casesReported.value,
+   hospitalBedsTotal.value, typePeriod.value */
+/* console.log(population.value, elapseTime.value, casesReported.value,
+   hospitalBedsTotal.value, typePeriod)
+*/
 const data = {
   region: {
     name: 'Africa',
@@ -29,6 +24,12 @@ const data = {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
+/*
+  const result = [
+  population.value, timeToElapse.value, reportedCases.value,
+  totalHospitalBeds.value, periodType.value
+  ];
+*/
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const result = [
@@ -36,8 +37,8 @@ form.addEventListener('submit', (e) => {
     hospitalBedsTotal.value, typePeriod.value
   ];
   const covid19ImpactEstimator = () => {
-    // Normalise the time in days, weeks and months
-    // eslint-disable-next-line no-shadow
+  // Normalise the time in days, weeks and months
+  // eslint-disable-next-line no-shadow
     const normalisedPeriod = (data) => {
       const period = result[4]; // result[4]
       const timeElapsed = result[1]; // result[1]
@@ -113,12 +114,15 @@ form.addEventListener('submit', (e) => {
     document.getElementById('card-text 13').innerHTML = severeImpact.casesForVentilatorsByRequestedTime;
     document.getElementById('card-text 14').innerHTML = impact.dollarsInFlight;
     document.getElementById('card-text 15').innerHTML = severeImpact.dollarsInFlight;
+    console.log(data, impact, severeImpact);
     return {
       data: input,
       impact,
       severeImpact
     };
   };
+  form.reset();
+  displayResult.style.display = 'flex';
   covid19ImpactEstimator(data);
-  module.exports = covid19ImpactEstimator;
+// export default covid19ImpactEstimator;
 });

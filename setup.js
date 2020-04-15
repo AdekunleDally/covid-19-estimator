@@ -1,24 +1,26 @@
-const { JSDOM } = require('jsdom');
+// my-custom-environment
+const NodeEnvironment = require('jest-environment-node');
 
-const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
-const { window } = jsdom;
+class CustomEnvironment extends NodeEnvironment {
+  constructor(config) {
+    super(config);
+  }
 
-function copyProps(src, target) {
-  Object.defineProperties(target, {
-    ...Object.getOwnPropertyDescriptors(src),
-    ...Object.getOwnPropertyDescriptors(target),
-  });
+  async setup() {
+    await super.setup();
+    await someSetupTasks();
+    this.global.someGlobalObject = createGlobalObject();
+  }
+
+  async teardown() {
+    this.global.someGlobalObject = destroyGlobalObject();
+    await someTeardownTasks();
+    await super.teardown();
+  }
+
+  runScript(script) {
+    return super.runScript(script);
+  }
 }
 
-global.window = window;
-global.document = window.document;
-global.navigator = {
-  userAgent: 'node.js',
-};
-global.requestAnimationFrame = function (callback) {
-  return setTimeout(callback, 0);
-};
-global.cancelAnimationFrame = function (id) {
-  clearTimeout(id);
-};
-copyProps(window, global);
+module.exports = CustomEnvironment;
