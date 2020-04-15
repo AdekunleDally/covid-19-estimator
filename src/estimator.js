@@ -29,7 +29,7 @@ const data = {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
-window.form.addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   const result = [
     population.value, elapseTime.value, casesReported.value,
