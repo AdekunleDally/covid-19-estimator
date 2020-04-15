@@ -4,6 +4,19 @@ const elapseTime = document.querySelector('#data-time-to-elapse');
 const casesReported = document.querySelector('#data-reported-cases');
 const hospitalBedsTotal = document.querySelector('#data-total-hospital-beds');
 const typePeriod = document.querySelector('#data-period-type');
+const data = {
+  region: {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  },
+  periodType: 'days',
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+};
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const result = [
@@ -81,5 +94,5 @@ form.addEventListener('submit', (e) => {
     };
   };
   covid19ImpactEstimator(data);
-module.exports = covid19ImpactEstimator;
+  module.exports = covid19ImpactEstimator;
 });
