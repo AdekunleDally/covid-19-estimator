@@ -6,7 +6,8 @@ test('use jsdom in this test file', () => {
   const element = document.createElement('div');
   expect(element).not.toBeNull();
 });
-const jsdom = require("jsdom");
+const jsdom = require('jsdom');
+
 const { JSDOM } = jsdom;
 const { window } = new JSDOM('./index.html');
 const form = window.document.querySelector('.data-go-estimate');
