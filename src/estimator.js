@@ -86,7 +86,21 @@ form.addEventListener('submit', (e) => {
       casesForVentilatorsByRequestedTime: requireVentilatorTwo,
       dollarsInFlight: dollarsLostTwo
     };
-    // console.log(data, impact, severeImpact);
+    document.getElementById('card-text 1').innerHTML = impact.population;
+    document.getElementById('card-text 2').innerHTML = impact.currentlyInfected;
+    document.getElementById('card-text 3').innerHTML = severeImpact.currentlyInfected;
+    document.getElementById('card-text 4').innerHTML = impact.infectionsByRequestedTime;
+    document.getElementById('card-text 5').innerHTML = severeImpact.infectionsByRequestedTime;
+    document.getElementById('card-text 6').innerHTML = impact.severeCasesByRequestedTime;
+    document.getElementById('card-text 7').innerHTML = severeImpact.severeCasesByRequestedTime;
+    document.getElementById('card-text 8').innerHTML = impact.hospitalBedsByRequestedTime;
+    document.getElementById('card-text 9').innerHTML = severeImpact.hospitalBedsByRequestedTime;
+    document.getElementById('card-text 10').innerHTML = impact.casesForICUByRequestedTime;
+    document.getElementById('card-text 11').innerHTML = severeImpact.casesForICUByRequestedTime;
+    document.getElementById('card-text 12').innerHTML = impact.casesForVentilatorsByRequestedTime;
+    document.getElementById('card-text 13').innerHTML = severeImpact.casesForVentilatorsByRequestedTime;
+    document.getElementById('card-text 14').innerHTML = impact.dollarsInFlight;
+    document.getElementById('card-text 15').innerHTML = severeImpact.dollarsInFlight;
     return {
       data: input,
       impact,
